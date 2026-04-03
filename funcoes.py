@@ -20,7 +20,7 @@ def cria_banco():
         print("Banco aberto")
     except FileNotFoundError:
         with open(arq, "w") as arquivo:
-            json.dump([], arquivo)
+            json.dump([], arquivo, indent=4)
         print("Banco criado")
 
 
@@ -55,7 +55,7 @@ def menu(*funcoes):
             print("Opção inválida")
 
 
-def carrega_arquivo():
+def carregar_produtos():
     try:
         with open(arq, "r", encoding="utf-8") as arquivo:
             lista = json.load(arquivo)
@@ -67,19 +67,21 @@ def carrega_arquivo():
 def salva_arquivo(lista):
     try:
         with open(arq, "w", encoding="utf-8") as arquivo:
-            json.dump(lista, arquivo)
+            json.dump(lista, arquivo, indent=4)
     except FileNotFoundError:
-        print("Erro, arquivo não econtrado.")
+        print("Erro, arquivo não encontrado.")
     except Exception:
         print("Desculpe, ocorreu um erro desconhecido.")
 
 
 def cadastrar_produto(dicionario):
-    lista = carrega_arquivo()
+    lista = carregar_produtos()
     lista.append(dicionario)
     salva_arquivo(lista)
 
 
-def listar_produto():
-    lista = carrega_arquivo()
-    return lista
+def mostrar_lista(lista):
+    print(f'{"ind":^5}|{"Produto":^19}|{"Preço":^12}|{"Quantidade":^12}')
+    for i, v in enumerate(lista):
+        print(f"{i+1:^6}{v['nome']:<19} {f"R$: {v['preco']:.2f}":^11} {v['quantidade']:^13}")
+    print("")

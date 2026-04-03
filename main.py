@@ -5,7 +5,11 @@ funcoes.cria_banco()
 while True:
     funcoes.cabecalho("Sistema de Controle de Estoque")
     resposta = funcoes.menu(
-        "Cadastrar Produto", "Listar Produtos", "Atualizar Produto", "Excluir Produto"
+        "Cadastrar Produto",
+        "Listar Produtos",
+        "Atualizar Produto",
+        "Excluir Produto",
+        "Sair do Programa",
     )
 
     if resposta == 1:
@@ -16,14 +20,55 @@ while True:
         dicionario["quantidade"] = funcoes.leia_int(
             f"Digite a quantidade de {dicionario['nome']} em estoque: "
         )
-        funcoes.catastrar_produto(dicionario)
+        funcoes.cadastrar_produto(dicionario)
         sleep(2)
 
     if resposta == 2:
         funcoes.cabecalho("Lista de Produtos")
-        lista = funcoes.listar_produto()
-        print(f'{"ind":^5}|{"Produto":^19}|{"Preço":^12}|{"Quantidade":^12}')
-        for i, v in enumerate(lista):
-            print(f"{i+1:^6}{v['nome']:<19} {f"R$: {v['preco']:.2f}":^11} {v['quantidade']:^13}")
+        lista = funcoes.carregar_produtos()
+        funcoes.mostrar_lista(lista)
         print("")
         sleep(2)
+
+    if resposta == 3:
+        funcoes.cabecalho("Atualizar Produto")
+        lista = funcoes.carregar_produtos()
+        funcoes.mostrar_lista(lista)
+        while True:
+            escolha = funcoes.leia_int("Qual o número do produto que você deseja atualizar?: ")
+            if 0 < escolha <= len(lista):
+                nome = input("Digite o novo nome do produto: ")
+                preco = funcoes.leia_float("Digite o novo valor do produto: ")
+                quant = funcoes.leia_int("Digite a nova quantidade do produto: ")
+                produto = lista[escolha - 1]
+                produto["nome"] = nome
+                produto["preco"] = preco
+                produto["quantidade"] = quant
+                funcoes.salva_arquivo(lista)
+                break
+            else:
+                print("Produto não encontrado.")
+
+        print("")
+        sleep(2)
+
+    if resposta == 4:
+        funcoes.cabecalho("Excluir Produto")
+        lista = funcoes.carregar_produtos()
+        funcoes.mostrar_lista(lista)
+        while True:
+            escolha = funcoes.leia_int("Qual o número do produto que você deseja excluir?: ")
+            if 0 < escolha <= len(lista):
+                del lista[escolha - 1]
+                funcoes.salva_arquivo(lista)
+                break
+            else:
+                print("Produto não encontrado.")
+
+        print("")
+        sleep(2)
+
+    if resposta == 5:
+        print("Fechando o programa...")
+        sleep(2)
+        break
