@@ -1,6 +1,17 @@
-# 🛒 Sistema de Controle de Produtos
+# 📦 Sistema de Controle de Produtos (JSON)
 
-Aplicação desenvolvida em Python para gerenciamento de produtos, simulando um sistema simples de controle de estoque.
+Aplicação desenvolvida em Python para gerenciamento de produtos, utilizando armazenamento em arquivo JSON.
+Este projeto representa a versão inicial de um sistema de controle de estoque.
+
+---
+
+## ⚠️ Versão mais avançada disponível
+
+Este projeto foi evoluído para uma versão mais robusta utilizando banco de dados com SQLAlchemy:
+
+👉 https://github.com/fehngo/sistema-estoque-sqlalchemy
+
+---
 
 ## 🚀 Funcionalidades
 
@@ -8,7 +19,9 @@ Aplicação desenvolvida em Python para gerenciamento de produtos, simulando um 
 * 📋 Listagem de produtos
 * ✏️ Atualização de produtos
 * ❌ Exclusão de produtos
-* 💾 Persistência de dados em JSON
+* 💾 Persistência de dados em arquivo JSON
+
+---
 
 ## 🧠 Conceitos aplicados
 
@@ -18,9 +31,14 @@ Aplicação desenvolvida em Python para gerenciamento de produtos, simulando um 
 * Tratamento de erros
 * Lógica de CRUD (Create, Read, Update, Delete)
 
+---
+
 ## 🛠️ Tecnologias
 
 * Python 3
+* JSON (armazenamento local)
+
+---
 
 ## ▶️ Como executar
 
@@ -28,15 +46,40 @@ Aplicação desenvolvida em Python para gerenciamento de produtos, simulando um 
 python main.py
 ```
 
+---
+
 ## 📁 Estrutura do projeto
 
 ```
-📦 projeto
+📦 sistema-controle-produtos-json
  ┣ 📜 main.py
  ┣ 📜 funcoes.py
  ┣ 📜 banco_arquivo.json
  ┗ 📜 README.md
 ```
+
+---
+
+## 📌 Observações
+
+* Projeto desenvolvido para fins de estudo e prática
+* Não utiliza banco de dados
+* Armazenamento baseado em arquivo local
+
+---
+
+## 📈 Evolução do projeto
+
+Este sistema foi posteriormente aprimorado com:
+
+* Banco de dados (SQLite)
+* SQLAlchemy (ORM)
+* Melhor organização de código
+
+👉 Confira a versão atualizada:
+https://github.com/fehngo/sistema-estoque-sqlalchemy
+
+---
 
 ## 🎯 Objetivo
 
@@ -44,8 +87,6 @@ Projeto desenvolvido com foco em prática de lógica de programação e simulaç
 
 ---
 
-💡 Futuras melhorias:
+## 👨‍💻 Autor
 
-* 🔍 Busca de produtos
-* ⚠️ Alerta de estoque baixo
-* 🌐 Transformação em API (Flask)
+Felippe do Nascimento Camargo
